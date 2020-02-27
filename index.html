@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+</head>
+
+<body>
+        <title>Index</title>
     <h2>Rust</h2>
     <p>First you have to install the rust toolchain <br> You can do that here <a
             href="https://rustwasm.github.io/book/game-of-life/setup.html#the-rust-toolchain">Link</a> </p>
@@ -66,10 +69,56 @@
          -o src/program.wasm</code>
         <code>node src/program.js</code>
         <code>1 + 2 = 3</code>
-</head>
 
-<body>
+        <h2>C/C++</h2>
+        <p>Antes de considerar compilar un proyecto de C/C++ a WebAssembly, hay varias cosas que debemos tomar en cuenta, 
+                como tener instaladas todas las herramientas necesarias para el proceso.</p>
+        <p>Si buscas en la documentación oficial, te dice que solamente necesitas instalar emscripten. Sin embargo, lo que no 
+                te mencionan es que para hacerlo debes tener varias cosas desde antes.</p>
+        <p>Para la instalación inicial de emscripten (al menos en macOS o Linux), debes tener Python 2.7 
+                (aunque ya no se ofrezca servicio para esta versión del lenguaje), c-make y el Java Runtime Environment 
+                en tu máquina. De otra manera, al momento de tratar de instalar emscripten te soltará un error y difícilmente 
+                podrás rodearlo.</p>
+        <p>NOTA: en macOS, por alguna razón, es difícil realizar la instalación si tienes Python 3.7 instalado 
+                aparte de Python 2.7 y suelta varios errores difíciles de resolver, por lo que si ese es el caso, 
+                recomendamos utilizar una máquina virtual con Linux en vez de intentar resolverlos. Es más fácil y rápido.</p>
+        <p>Si cumples con todos los requerimientos previos, puedes continuar con la instalación de emscript. Primero 
+                clonamos el repo con el comando:</p>
+        <code>git clone https://github.com/emscripten-core/emsdk.git</code>
+        <p>Una vez clonado, usamos cd emsdk para ir a la carpeta en la que se clonó, y corremos los comandos:</p>
+        <code>./emsdk install latest</code>
+        <code>./emsdk activate latest</code>
+        <code>source ./emsdk_env.sh</code>
+        <p>Y listo, ahora tenemos emscript en nuestro equipo o máquina virtual y podemos proseguir a compilar 
+                nuestro archivo .c a .wasm (o bueno, tres archivos entre los cuales se encuentra un wasm).</p>
+        <p>Primero, necesitamos un archivo .c que querramos compilar a WebAssembly. Para el ejemplo, es suficiente 
+                con un simple Hello World, código simple que puedes encontrar en cualquier parte de internet.</p>
+        <code>#include &lt;stdio.h&gt;
 
+                int main(int argc, char ** argv) {
+                    printf("Hello World\n");
+                }</code>
+        <p>Seguido de eso, utilizaremos nuestra nueva herramienta emscript para traducir el archivo .c a un archivo 
+                .wasm con el siguiente comando:</p>
+        <code>emcc hello.c -s WASM=1 -o hello.html</code>
+        <p>Lo que esto está haciendo es lo siguiente:
+
+                emcc invoca la herramienta de emscript
+                
+                hello.c es el archivo que queremos traducir a wasm
+                
+                -s WASM=1 está especificando que queremos nuestro output en WebAssembly. Si no ponemos esta bandera, 
+                lo que hará emscript es crear un archivo .js por default.
+                
+                -o hello.html dice que queremos generar un archivo HTML para invocar, compilar e instanciar el código WASM 
+                que acabamos de generar.
+                
+                Lo que esto hará es crear tres archivos: un HTML para abrir en navegador, un WASM para compilar y ejecutar, 
+                y un JavaScript que servirá para unir ambos archivos.
+                
+                Para verificar que esto haya funcionado, basta con abrir nuestro archivo HTML con cualquier navegador 
+                moderno que soporte WASM. Si es correcto nuestro procedimiento, veremos "Hello World" impreso en la 
+                consola del navegador.</p>
 </body>
 
 </html>
