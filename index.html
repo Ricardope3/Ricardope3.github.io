@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <h2>Rust</h2>
+    <p>First you have to install the rust toolchain <br> You can do that here <a
+            href="https://rustwasm.github.io/book/game-of-life/setup.html#the-rust-toolchain">Link</a> </p>
+    <p>Now that you have everything installed you can download the tutorial proyect template</p>
+    <code>cargo generate --git https://github.com/rustwasm/wasm-pack-template</code>
+    <p>You can name your proyect however you want. <br>Now you can enter the directory</p>
+    <code>cd wasm-game-of-life</code>
+    <p>Now build the proyect</p>
+    <code>wasm-pack build</code>
+    <p>Now initialize everything</p>
+    <code>npm init wasm-app www</code>
+    <p>Install all the dependencies</p>
+    <code>npm install</code>
+    <p>Serve locally</p>
+    <code>npm run start</code>
+    <code>Navigate to your broswer in http://localhost:8080/</code>
+    <h2>C#</h2>
+    <p>Para instalar el codigo del proyecto usa: </p>
+    <code>git clone https://github.com/azu/webassembly-example.git</code>
+    <p>Para entrar al directorio usa: </p>
+    <code>cd webassembly-example</code>
+    <p>Para instalar las dependencias usa: </p>
+    <code>yarn install</code>
+    <p>Para correr usa: </p>
+    <code>yarn test</code>
+    <p>Sample output to</p>
+    <code>wa compile src/program.c -o src/program.wasm</code>
+    <code>Compiling on darwin-x64 ...
+
+        clang src/program.c
+         -c
+         --target=wasm32-unknown-unknown
+         -emit-llvm
+         -nostdinc
+         -nostdlib
+         -D WEBASSEMBLY
+         -isystem /Users/azu/.ghq/github.com/azu/webassembly-example/node_modules/webassembly/include
+         -o /var/folders/3h/ksxf_vgd08z_jy__g662s1rm0000gn/T/wa1_87386RSGv1n27PM9I.tmp
+        
+        llvm-link /var/folders/3h/ksxf_vgd08z_jy__g662s1rm0000gn/T/wa1_87386RSGv1n27PM9I.tmp /Users/azu/.ghq/github.com/azu/webassembly-example/node_modules/webassembly/lib/webassembly.bc
+         -only-needed
+         -o /var/folders/3h/ksxf_vgd08z_jy__g662s1rm0000gn/T/wa2_873864WEJ2F4Jlcda.tmp
+        
+        llc /var/folders/3h/ksxf_vgd08z_jy__g662s1rm0000gn/T/wa2_873864WEJ2F4Jlcda.tmp
+         -march=wasm32
+         -filetype=asm
+         -asm-verbose=false
+         -thread-model=single
+         -data-sections
+         -function-sections
+         -o /var/folders/3h/ksxf_vgd08z_jy__g662s1rm0000gn/T/wa1_87386RSGv1n27PM9I.tmp
+        
+        s2wasm /var/folders/3h/ksxf_vgd08z_jy__g662s1rm0000gn/T/wa1_87386RSGv1n27PM9I.tmp
+         --import-memory
+         --allocate-stack 10000
+         -o /var/folders/3h/ksxf_vgd08z_jy__g662s1rm0000gn/T/wa2_873864WEJ2F4Jlcda.tmp
+        
+        wasm-opt /var/folders/3h/ksxf_vgd08z_jy__g662s1rm0000gn/T/wa2_873864WEJ2F4Jlcda.tmp
+         -o src/program.wasm</code>
+        <code>node src/program.js</code>
+        <code>1 + 2 = 3</code>
+</head>
+
+<body>
+
+</body>
+
+</html>
